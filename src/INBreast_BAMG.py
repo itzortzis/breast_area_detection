@@ -39,6 +39,7 @@ def generate_masks(dcm_list):
   idx = 0
   for i in tqdm(range(len(dcm_list))):
     dcm_name = dcm_list[i]
+    
     try:
       m = MAMG(paths, dcm_name)
       m.run()
@@ -47,6 +48,7 @@ def generate_masks(dcm_list):
       idx += 1
     except:
       continue
+    
     
   return dataset[:idx, :, :, :]
 
@@ -58,8 +60,9 @@ def main():
 
 
 def check_dataset():
-  w = 78
+  w = 92
   dataset = np.load("./generated/dataset.npy")
+  print("Dataset shape: ", dataset.shape)
   plt.figure()
   plt.imshow(dataset[w, :, :, 0], cmap='gray')
   plt.savefig("xaxa.png")

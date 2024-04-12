@@ -39,25 +39,27 @@ class MAMG:
         
     def add_random_label(self):
         x = random.randint(10, 60)
-        y = random.randint(150, 200)
+        y = random.randint(170, 200)
         w = random.randint(20, 50)
         h = random.randint(5, 15)
+        
+        intensity = random.randint(1000, np.max(self.pixel_array))
         
         if self.lat == 1:
             y = 256 - y - w
         
-        self.pixel_array[x:x+h, y:y+w] = 0
+        self.pixel_array[x:x+h, y:y+w] = 1000
         
         
     def cluster_pixel_array(self):
         img = self.pixel_array.copy()
         norm_img = (img - np.min(img)) / (np.max(img) - np.min(img))
         flat_img = np.reshape(norm_img, [-1, 1])
-        cm = KMeans(n_clusters = 2, random_state = 0, n_init="auto")
+        cm = KMeans(n_clusters=2, random_state=0, n_init="auto")
         cm.fit(flat_img)
         labels=cm.labels_
         cl_img = np.reshape(labels, img.shape)
-        cl_img = label2rgb(cl_img, bg_label = 0) * np.max(img)
+        cl_img = label2rgb(cl_img, bg_label=0) * np.max(img)
         cl_img[cl_img > 0] = 1
         self.clustered_img = cl_img[:, :, 0]
         
@@ -72,11 +74,12 @@ class MAMG:
         
         index = 1
         for cntr in self.contours:
-            area = cv2.contourArea(cntr)
-            x,y,w,h = cv2.boundingRect(cntr)
+            # area = cv2.contourArea(cntr)
+            x, y, w, h = cv2.boundingRect(cntr)
+            # print(x, y, w, h)
             if w < 80:
-                self.clustered_img[y:y+h, x:x+w, 0] = 0
+                self.clustered_img[y:y+h, x:x+w] = 0
 
-            index = index + 1
+            index += 1
 
         
