@@ -10,9 +10,17 @@ from skimage.color import label2rgb
 
 class MAMG:
     
-    def __init__(self, paths):
+    def __init__(self, paths, img_name):
         self.paths = paths
-        print("Hello world")
+        self.img_name = img_name
+        
+    def run(self):
+        self.get_pixel_array(self.img_name)
+        self.get_laterality()
+        self.add_random_label()
+        self.cluster_pixel_array()
+        self.detect_contours()
+        self.throw_small_contours()
         
         
     def get_pixel_array(self, img_name):
@@ -42,7 +50,7 @@ class MAMG:
         
         
     def cluster_pixel_array(self):
-        img = self.pixel_array
+        img = self.pixel_array.copy()
         norm_img = (img - np.min(img)) / (np.max(img) - np.min(img))
         flat_img = np.reshape(norm_img, [-1, 1])
         cm = KMeans(n_clusters = 2, random_state = 0, n_init="auto")
@@ -72,16 +80,3 @@ class MAMG:
             index = index + 1
 
         
-        
-        
-    
-        
-        
-        
-    
-    
-
-    
-
-
-
