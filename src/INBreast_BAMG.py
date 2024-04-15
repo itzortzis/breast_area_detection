@@ -34,7 +34,7 @@ def build_dcm_dict(path_to_csv):
 
 def generate_masks(dcm_list):
   
-  dataset = np.zeros((len(dcm_list), 256, 256, 2))
+  dataset = np.zeros((len(dcm_list)*3, 256, 256, 2))
   
   idx = 0
   for i in tqdm(range(len(dcm_list))):
@@ -43,9 +43,10 @@ def generate_masks(dcm_list):
     try:
       m = MAMG(paths, dcm_name)
       m.run()
-      dataset[idx, :, :, 0] = m.pixel_array
-      dataset[idx, :, :, 1] = m.clustered_img
-      idx += 1
+      for w in range(m.pas.shape[0]):
+        dataset[idx, :, :, 0] = m.pas[w, :, :]
+        dataset[idx, :, :, 1] = m.clustered_img
+        idx += 1
     except:
       continue
     
@@ -68,9 +69,12 @@ def check_dataset():
   ans = input("Next? (y/n)")
   while w < dataset.shape[0]:
     # w = 36
+    img = dataset[w, :, :, 0]
+    # img[1,1] = 4095
+    # print(np.min(img), np.max(img))
     print("Index: ", w)
     plt.figure()
-    plt.imshow(dataset[w, :, :, 0], cmap='gray')
+    plt.imshow(img, cmap='gray')
     plt.savefig("xaxa.png")
     plt.close()
     plt.figure()
@@ -82,5 +86,5 @@ def check_dataset():
   
   
 if __name__ == "__main__":
-  # main()
+  main()
   check_dataset()

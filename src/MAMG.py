@@ -15,13 +15,27 @@ class MAMG:
         self.img_name = img_name
         
     def run(self):
+        self.pas = np.zeros((4, 256, 256))
+        
         self.get_pixel_array(self.img_name)
         self.get_laterality()
         self.cluster_pixel_array()
-        self.add_random_label()
+        self.augmentation()
         self.correct_clustering()
         # self.detect_contours()
         # self.throw_small_contours()
+        
+    
+    def augmentation(self):
+        img = self.pixel_array.copy()
+        
+        self.pas[0, :, :] = self.pixel_array.copy()
+        percentage = random.uniform(0.75, 0.95)
+        self.pas[1, :, :] = self.add_random_label() * percentage
+        percentage = random.uniform(0.75, 0.95)
+        self.pas[2, :, :] = self.add_random_label() * percentage
+        percentage = random.uniform(0.75, 0.95)
+        self.pas[3, :, :] = self.pixel_array.copy() * percentage
         
         
     def get_pixel_array(self, img_name):
@@ -39,6 +53,7 @@ class MAMG:
         
         
     def add_random_label(self):
+        pa = self.pixel_array.copy()
         x = random.randint(10, 60)
         y = random.randint(170, 185)
         w = random.randint(20, 50)
@@ -50,7 +65,8 @@ class MAMG:
         if self.lat == 1:
             y = 256 - y - w
         
-        self.pixel_array[x:x+h, y:y+w] = intensity
+        pa[x:x+h, y:y+w] = intensity
+        return pa
         
         
     def cluster_pixel_array(self):
