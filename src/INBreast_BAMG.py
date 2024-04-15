@@ -60,16 +60,25 @@ def main():
 
 
 def check_dataset():
-  w = 92
+  
+  
+  w = 0
   dataset = np.load("./generated/dataset.npy")
   print("Dataset shape: ", dataset.shape)
-  plt.figure()
-  plt.imshow(dataset[w, :, :, 0], cmap='gray')
-  plt.savefig("xaxa.png")
-  
-  plt.figure()
-  plt.imshow(dataset[w, :, :, 1], cmap='gray')
-  plt.savefig("xaxa_mask.png")
+  ans = input("Next? (y/n)")
+  while w < dataset.shape[0]:
+    # w = 36
+    print("Index: ", w)
+    plt.figure()
+    plt.imshow(dataset[w, :, :, 0], cmap='gray')
+    plt.savefig("xaxa.png")
+    plt.close()
+    plt.figure()
+    plt.imshow(dataset[w, :, :, 1], cmap='gray')
+    plt.savefig("xaxa_mask.png")
+    plt.close()
+    w += 1
+    ans = input("Next? (y/n)")
   
   
 if __name__ == "__main__":
