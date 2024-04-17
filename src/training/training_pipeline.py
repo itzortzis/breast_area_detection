@@ -8,9 +8,9 @@ from torchmetrics import F1Score
 from matplotlib import pyplot as plt
 
 
-from utils.data_preprocessing import DPP
-from utils.initializer import INIT
-from utils.print_info import Printer
+from training.data_preprocessing import DPP
+from training.initializer import INIT
+from training.print_info import Printer
 
 
 class Training():

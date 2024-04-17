@@ -4,10 +4,10 @@ import torch
 import numpy as np
 
 
-from utils.training_pipeline import Training
-import utils.models as models
+from training.training_pipeline import Training
+import training.models as models
 
-import utils.loaders as loaders
+import training.loaders as loaders
 
 paths = {
 	'dataset': './generated/dataset.npy'
@@ -47,12 +47,12 @@ if __name__ == "__main__":
         'figures': './generated/figures/'
     }
     t = Training(comps, params, tr_paths)
-    # t.main_training()
+    t.main_training()
     
     
-    test_set = loaders.Dataset(dataset[1000:, :, :, :])
-    params = {'batch_size': 10, 'shuffle': False}
-    test_ldr = torch.utils.data.DataLoader(test_set, **params)
+    # test_set = loaders.Dataset(dataset[1000:, :, :, :])
+    # params = {'batch_size': 10, 'shuffle': False}
+    # test_ldr = torch.utils.data.DataLoader(test_set, **params)
     
-    score = t.ext_inference(test_ldr)
-    print(score)
+    # score = t.ext_inference(test_ldr)
+    # print(score)
