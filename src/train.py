@@ -5,9 +5,8 @@ import numpy as np
 
 
 from training.training_pipeline import Training
-import training.models as models
-
-import training.loaders as loaders
+import utils.models as models
+import utils.loaders as loaders
 
 paths = {
 	'dataset': './generated/dataset.npy'

@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 
-import training.loaders as loaders
+import utils.loaders as loaders
 
 class DPP:
 	def __init__(self, dataset):
