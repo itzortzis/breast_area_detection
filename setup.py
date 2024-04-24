@@ -14,9 +14,9 @@ setuptools.setup(
     description='BAD_tool installation',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='https://github.com/itzortzis/breast_area_detection.git',
+    url='https://github.com/itzortzis/breast_area_detection',
     project_urls = {
-        "Code": "https://github.com/itzortzis/breast_area_detection.git",
+        "Code": "https://github.com/itzortzis/breast_area_detection",
         "Bug Tracker": "https://github.com/itzortzis/breast_area_detection/issues"
     },
     license='GPL-3.0',
