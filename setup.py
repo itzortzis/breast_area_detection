@@ -26,6 +26,6 @@ setuptools.setup(
         "src.inference": "inference",
         "src.training": "training",
         "src.utils": "utils"
-    }
+    },
     install_requires=['numpy', 'torch', 'tqdm', 'matplotlib']#, 'csv', 'sklearn.cluster', 'skimage.color', 'calendar', 'torchmetrics'],
 )
