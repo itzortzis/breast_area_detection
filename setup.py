@@ -21,5 +21,5 @@ setuptools.setup(
     },
     license='GPL-3.0',
     packages=['bad'],
-    install_requires=['numpy', 'torch', 'tqdm', 'matplotlib', 'csv', 'sklearn.cluster', 'skimage.color', 'calendar', 'torchmetrics'],
+    install_requires=['numpy'],
 )
