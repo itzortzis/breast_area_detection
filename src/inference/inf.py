@@ -53,7 +53,7 @@ class Inf:
 
             preds = torch.argmax(outputs, dim=1)
             # print(preds.size(), y.size(), idx)
-            self.show_imgs(y, preds, idx)
+            self.show_imgs(x, y, preds, idx)
             self.metric.update(preds, y)
             idx += 1
 
@@ -62,22 +62,31 @@ class Inf:
         return test_set_score.item()
     
     
-    def show_imgs(self, y, preds, idx):
+    def show_imgs(self, x, y, preds, idx):
+        np_x = x.detach().cpu().numpy()
         np_y = y.detach().cpu().numpy()
         np_preds = preds.detach().cpu().numpy()
         
+        img = np_x[2, 0, :, :]
         mask = np_y[2, :, :]
         pred = np_preds[2, :, :]
         
         fig = plt.figure()
 
-        plt.subplot(1, 2, 1)
+        plt.subplot(1, 3, 1)
+        plt.imshow(img, cmap='gray')
+        plt.axis('off')
+        plt.title('Mammogram with label', fontsize=8)
+        
+        plt.subplot(1, 3, 2)
         plt.imshow(mask, cmap='gray')
         plt.axis('off')
+        plt.title('Annotation mask', fontsize=8)
 
-        plt.subplot(1, 2, 2)
+        plt.subplot(1, 3, 3)
         plt.imshow(pred, cmap='gray')
         plt.axis('off')
+        plt.title('Model prediction', fontsize=8)
         
         plt.savefig('./generated/preds/' + str(idx) + '.png')
         plt.close()

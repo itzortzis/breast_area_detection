@@ -22,7 +22,7 @@ if __name__ == "__main__":
     out_channels = 2
     unet = models.UNET(in_channels, out_channels)
     loss_fn = torch.nn.CrossEntropyLoss()
-    opt = torch.optim.Adam(unet.parameters(), lr=0.01)
+    opt = torch.optim.Adam(unet.parameters(), lr=0.001)
 
     comps = {
         'model': unet,

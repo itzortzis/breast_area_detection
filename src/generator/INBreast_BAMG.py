@@ -86,5 +86,5 @@ def check_dataset():
   
   
 if __name__ == "__main__":
-  # main()
-  check_dataset()
+  main()
+  # check_dataset()

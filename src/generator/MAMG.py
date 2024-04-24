@@ -29,13 +29,15 @@ class MAMG:
     def augmentation(self):
         img = self.pixel_array.copy()
         
-        self.pas[0, :, :] = self.pixel_array.copy()
+        # self.pas[0, :, :] = self.pixel_array.copy()
+        percentage = random.uniform(0.75, 0.95)
+        self.pas[0, :, :] = self.add_random_label() * percentage
         percentage = random.uniform(0.75, 0.95)
         self.pas[1, :, :] = self.add_random_label() * percentage
         percentage = random.uniform(0.75, 0.95)
         self.pas[2, :, :] = self.add_random_label() * percentage
         percentage = random.uniform(0.75, 0.95)
-        self.pas[3, :, :] = self.pixel_array.copy() * percentage
+        self.pas[3, :, :] = self.add_random_label() * percentage
         
         
     def get_pixel_array(self, img_name):

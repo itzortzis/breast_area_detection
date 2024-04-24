@@ -26,6 +26,7 @@ class DPP:
 	def normalize_sets(self):
 		max_ = np.max(self.train_set[:, :, :, 0])
 		min_ = np.min(self.train_set[:, :, :, 0])
+		print(max_, min_)
 		self.train_set = self.normalize(self.train_set, max_, min_)
 		self.valid_set = self.normalize(self.valid_set, max_, min_)
 		self.set_set = self.normalize(self.test_set, max_, min_)
