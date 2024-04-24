@@ -23,7 +23,7 @@ setuptools.setup(
     # packages=[('bad', ['src'])],
     package_dir = {
         "src": "src",
-        "inference.inf": "src/inference/inf" 
+        "inference": "src/inference/" 
                    },
     install_requires=['numpy', 'torch', 'tqdm', 'matplotlib']#, 'csv', 'sklearn.cluster', 'skimage.color', 'calendar', 'torchmetrics'],
 )
