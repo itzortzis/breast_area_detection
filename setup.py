@@ -20,6 +20,6 @@ setuptools.setup(
         "Bug Tracker": "https://github.com/itzortzis/breast_area_detection/issues"
     },
     license='GPL-3.0',
-    packages=setuptools.find_packages(),#['src'],
+    packages=[('bad', ['src'])],
     install_requires=['numpy', 'torch', 'tqdm', 'matplotlib']#, 'csv', 'sklearn.cluster', 'skimage.color', 'calendar', 'torchmetrics'],
 )
