@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name='BAD',
+    name='bad',
     version='0.1.0',
     author='I.N.Tzortzis',
     author_email='i.n.tzortzis@gmail.com',
@@ -21,5 +21,5 @@ setuptools.setup(
     },
     license='GPL-3.0',
     packages=['bad'],
-    install_requires=['numpy'],
+    install_requires=['numpy', 'torch', 'tqdm', 'matplotlib', 'csv', 'sklearn.cluster', 'skimage.color', 'calendar', 'torchmetrics'],
 )
