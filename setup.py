@@ -22,10 +22,7 @@ setuptools.setup(
     license='GPL-3.0',
     packages=[('bad', ['src'])],
     package_dir = {
-        "src": "bad",  
-        "src.inference": "inference",
-        "src.training": "training",
-        "src.utils": "utils"
+        "src": "bad"
     },
     install_requires=['numpy', 'torch', 'tqdm', 'matplotlib']#, 'csv', 'sklearn.cluster', 'skimage.color', 'calendar', 'torchmetrics'],
 )
