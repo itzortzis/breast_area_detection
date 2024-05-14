@@ -17,7 +17,8 @@ setuptools.setup(
         "Bug Tracker": "https://github.com/itzortzis/breast_area_detection/issues"
     },
     license='GPL-3.0',
-    packages=[('bad', ['src'])],
+    # packages=[('bad', ['src'])],
+    packages=['src'],
     # package_dir = {
     #     "src": "src",
     #     # "inference": "src/inference/",
