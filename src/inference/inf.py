@@ -3,8 +3,7 @@ from torchmetrics import F1Score
 from matplotlib import pyplot as plt
 
 
-import utils.models as models
-# from ..utils.models import UNET
+import src.utils.models as models
 
 
 class Inf:
