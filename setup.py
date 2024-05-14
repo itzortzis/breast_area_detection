@@ -1,6 +1,3 @@
-# This setup file is based on the one found here:
-# https://towardsdatascience.com/create-your-custom-python-package-that-you-can-pip-install-from-your-git-repository-f90465867893
-
 import setuptools
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -20,11 +17,11 @@ setuptools.setup(
         "Bug Tracker": "https://github.com/itzortzis/breast_area_detection/issues"
     },
     license='GPL-3.0',
-    # packages=[('bad', ['src'])],
-    package_dir = {
-        "src": "src",
-        # "inference": "src/inference/",
-        # "utils": "src/utils"
-                   },
+    packages=[('bad', ['src'])],
+    # package_dir = {
+    #     "src": "src",
+    #     # "inference": "src/inference/",
+    #     # "utils": "src/utils"
+    #                },
     install_requires=['numpy', 'torch', 'tqdm', 'matplotlib']#, 'csv', 'sklearn.cluster', 'skimage.color', 'calendar', 'torchmetrics'],
 )

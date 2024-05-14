@@ -4,7 +4,8 @@ import numpy as np
 from inference.inf import Inf
 import utils.loaders as loaders
 
-
+import sys
+print(sys.path)
 
 dataset = np.load("./generated/dataset.npy")
 
