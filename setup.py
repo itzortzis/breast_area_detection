@@ -18,7 +18,7 @@ setuptools.setup(
     },
     license='GPL-3.0',
     # packages=[('bad', ['src'])],
-    packages=['src'],
+    packages=['src', 'src.inference', 'src.utils'],
     # package_dir = {
     #     "src": "src",
     #     # "inference": "src/inference/",
