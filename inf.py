@@ -2,7 +2,7 @@ import torch
 import numpy as np
 
 from src.inference.inf import Inf
-# import utils.loaders as loaders
+import src.utils.loaders as loaders
 
 # import sys
 # print(sys.path)
