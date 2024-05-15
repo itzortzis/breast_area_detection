@@ -3,7 +3,7 @@ from torchmetrics import F1Score
 from matplotlib import pyplot as plt
 
 
-import src.utils.models as models
+import bad.utils.models as models
 
 
 class Inf:

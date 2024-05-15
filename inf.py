@@ -1,8 +1,8 @@
 import torch
 import numpy as np
 
-from src.inference.inf import Inf
-import src.utils.loaders as loaders
+from bad.inference.inf import Inf
+import bad.utils.loaders as loaders
 
 # import sys
 # print(sys.path)
