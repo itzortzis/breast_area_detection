@@ -67,9 +67,9 @@ class Inf:
         np_y = y.detach().cpu().numpy()
         np_preds = preds.detach().cpu().numpy()
         
-        img = np_x[2, 0, :, :]
-        mask = np_y[2, :, :]
-        pred = np_preds[2, :, :]
+        img = np_x[0, 0, :, :]
+        mask = np_y[0, :, :]
+        pred = np_preds[0, :, :]
         
         fig = plt.figure()
 
