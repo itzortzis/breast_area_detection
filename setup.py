@@ -8,7 +8,7 @@ setuptools.setup(
     version='0.2.2',
     author='I.N.Tzortzis',
     author_email='i.n.tzortzis@gmail.com',
-    description='BAD_tool installation',
+    description='Breast Area Detection tool',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url='https://github.com/itzortzis/breast_area_detection',
