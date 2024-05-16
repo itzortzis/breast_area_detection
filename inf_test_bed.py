@@ -7,7 +7,6 @@ import bad.utils.loaders as loaders
 
 samples = np.load("./aux/sample_data/sample_batch.npy")
 
-
 print(np.min(samples), np.max(samples))
 
 samples[:, :, :, 0] = (samples[:, :, :, 0] - np.min(samples[:, :, :, 0])) / (np.max(samples[:, :, :, 0]) - np.min(samples[:, :, :, 0]))
