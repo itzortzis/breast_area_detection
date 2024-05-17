@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name='bad',
-    version='0.2.2',
+    version='0.3.0',
     author='I.N.Tzortzis',
     author_email='i.n.tzortzis@gmail.com',
     description='Breast Area Detection tool',
