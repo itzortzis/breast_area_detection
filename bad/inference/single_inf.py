@@ -1,5 +1,6 @@
 import cv2
 import torch
+import numpy as np
 import bad.utils.models as models
 
 
