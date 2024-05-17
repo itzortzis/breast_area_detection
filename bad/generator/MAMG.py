@@ -13,10 +13,10 @@ class MAMG:
     def __init__(self, paths, img_name):
         self.paths = paths
         self.img_name = img_name
+        self.p_size = 512
         
     def run(self):
-        self.pas = np.zeros((4, 256, 256))
-        
+        self.pas = np.zeros((4, self.p_size, self.p_size))
         self.get_pixel_array(self.img_name)
         self.get_laterality()
         self.cluster_pixel_array()
@@ -45,7 +45,7 @@ class MAMG:
         path_to_dcm = self.paths['dcm'] + img_name + '.dcm'
         img_obj = pdcm.dcmread(path_to_dcm)
         img = img_obj.pixel_array
-        self.pixel_array = cv2.resize(img, (256, 256), cv2.INTER_LINEAR)
+        self.pixel_array = cv2.resize(img, (self.p_size, self.p_size), cv2.INTER_LINEAR)
         
     
     # O corresponds to left 
@@ -56,16 +56,16 @@ class MAMG:
         
     def add_random_label(self):
         pa = self.pixel_array.copy()
-        x = random.randint(10, 60)
-        y = random.randint(170, 185)
-        w = random.randint(20, 50)
-        h = random.randint(5, 15)
+        x = random.randint(int(self.p_size/25), int(self.p_size/4.26))
+        y = random.randint(int(self.p_size/1.5), int(self.p_size/1.38))
+        w = random.randint(int(self.p_size/12.8), int(self.p_size/5.12))
+        h = random.randint(int(self.p_size/51.2), int(self.p_size/17.06))
         
         intensity = random.randint(800, 1200)
         # intensity = random.uniform(0.3, 0.8)
         
         if self.lat == 1:
-            y = 256 - y - w
+            y = self.p_size - y - w #256 - y - w
         
         pa[x:x+h, y:y+w] = intensity
         return pa

@@ -6,9 +6,9 @@ from MAMG import MAMG
 from matplotlib import pyplot as plt
 
 paths = {
-    'xml': '../../datasets/INBreast/XML/',
-    'dcm': '../../datasets/INBreast/DICOM/',
-    'csv': '../../datasets/INBreast/INbreast_compact.csv'
+    'xml': '../../../../datasets/INBreast/XML/',
+    'dcm': '../../../../datasets/INBreast/DICOM/',
+    'csv': '../../../../datasets/INBreast/INbreast_compact.csv'
 }
 
 
@@ -34,8 +34,9 @@ def build_dcm_dict(path_to_csv):
 
 def generate_masks(dcm_list):
   
-  dataset = np.zeros((len(dcm_list)*3, 256, 256, 2))
+  dataset = np.zeros((len(dcm_list)*4, 512, 512, 2))
   
+  print(dataset.shape)
   idx = 0
   for i in tqdm(range(len(dcm_list))):
     dcm_name = dcm_list[i]
@@ -50,21 +51,21 @@ def generate_masks(dcm_list):
     except:
       continue
     
-    
+  print(idx)
   return dataset[:idx, :, :, :]
 
 
 def main():
   dcm_list = build_dcm_dict(paths['csv'])
   dataset = generate_masks(dcm_list)
-  np.save("./generated/dataset", dataset)
+  np.save("../../generated/dataset", dataset)
 
 
 def check_dataset():
   
   
   w = 0
-  dataset = np.load("./generated/dataset.npy")
+  dataset = np.load("../../generated/dataset.npy")
   print("Dataset shape: ", dataset.shape)
   ans = input("Next? (y/n)")
   while w < dataset.shape[0]:
@@ -86,5 +87,5 @@ def check_dataset():
   
   
 if __name__ == "__main__":
-  main()
-  # check_dataset()
+  # main()
+  check_dataset()

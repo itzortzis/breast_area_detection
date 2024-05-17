@@ -8,7 +8,7 @@ import bad.utils.models as models
 
 class Inf:
     def __init__(self, path_to_inf_model, device, set_ldr):
-        print()
+        # print()
         self.path_to_model = path_to_inf_model
         self.device = device
         self.set_ldr = set_ldr
