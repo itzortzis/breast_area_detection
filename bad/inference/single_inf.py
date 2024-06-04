@@ -30,7 +30,7 @@ class SingleInf:
     
     
     def inference(self):
-        self.model.load_state_dict(torch.load(self.path_to_model))
+        self.model.load_state_dict(torch.load(self.path_to_model, map_location=torch.device(self.device)))
         self.model.eval()
        
         x = self.prepare_data()
